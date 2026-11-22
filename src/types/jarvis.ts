@@ -1,5 +1,6 @@
 export type ModuleId =
   | 'command-deck'
+  | 'documents-vault'
   | 'vital-pulse'
   | 'training-lab'
   | 'fuel-nutrition'

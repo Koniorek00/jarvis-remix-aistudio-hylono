@@ -169,6 +169,21 @@ export const MODULE_VISUALS: Record<ModuleId, ModuleVisualSpec> = {
     subtitlePl: 'Atomy wiedzy .jkp, przełącznik 6 naczyń polimorficznych i aktywne przywołanie.',
     subtitleEn: 'Knowledge atoms (.jkp), 6-vessel polymorphic delivery, and active recall drill.',
   },
+  'documents-vault': {
+    id: 'documents-vault' as ModuleId,
+    code: '04',
+    pillar: 'core',
+    accent: '#14F1D9',
+    heroUrl: '',
+    cardUrl: '',
+    sidebarUrl: '',
+    fallbackGradient:
+      'radial-gradient(circle at 80% 50%, rgba(20, 241, 217, 0.22) 0%, rgba(11, 14, 20, 0.96) 58%, #090C11 100%)',
+    titlePl: 'Skarbiec Dokumentów & B2B',
+    titleEn: 'Document & B2B Vault',
+    subtitlePl: 'Scentralizowany skarbiec umów, KSeF, zgód medycznych i paszportów z pieczęcią SHA-256.',
+    subtitleEn: 'Unified repository for personal passports, clinical consents, B2B contracts and KSeF.',
+  },
   'sanctuary-audio': {
     id: 'sanctuary-audio',
     code: '11',
@@ -186,16 +201,9 @@ export const MODULE_VISUALS: Record<ModuleId, ModuleVisualSpec> = {
 
 export const MODULE_ORDER: ModuleId[] = [
   'command-deck',
-  'vital-pulse',
-  'training-lab',
-  'fuel-nutrition',
-  'health-dossier',
-  'day-rhythm',
-  'inner-circle',
-  'life-finance',
-  'hardware-nodes',
   'ai-swarm',
-  'forge-mind',
+  'hardware-nodes',
+  'documents-vault' as ModuleId,
   'sanctuary-audio',
 ];
 

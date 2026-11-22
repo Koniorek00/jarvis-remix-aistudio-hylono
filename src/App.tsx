@@ -7,6 +7,7 @@ import { JarvisProvider, useJarvis } from './store/jarvisStore';
 import { ModuleId } from './types/jarvis';
 
 const CommandDeckView = lazy(() => import('./views/CommandDeckView'));
+const DocumentVaultView = lazy(() => import('./views/DocumentVaultView'));
 const VitalPulseView = lazy(() => import('./views/VitalPulseView'));
 const TrainingLabView = lazy(() => import('./views/TrainingLabView'));
 const FuelNutritionView = lazy(() => import('./views/FuelNutritionView'));
@@ -54,6 +55,7 @@ class JarvisErrorBoundary extends Component<
 
 const VIEW_MAP: Record<ModuleId, React.LazyExoticComponent<React.FC>> = {
   'command-deck': CommandDeckView,
+  'documents-vault': DocumentVaultView,
   'vital-pulse': VitalPulseView,
   'training-lab': TrainingLabView,
   'fuel-nutrition': FuelNutritionView,

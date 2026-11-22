@@ -8,6 +8,7 @@ import {
   Cpu,
   Dumbbell,
   Flame,
+  FileCheck,
   HeartHandshake,
   LayoutGrid,
   Pause,
@@ -32,6 +33,7 @@ import { ModuleId, OsMode } from '../../types/jarvis';
 
 const MODULE_ICONS: Record<ModuleId, React.ComponentType<{ className?: string }>> = {
   'command-deck': LayoutGrid,
+  'documents-vault': FileCheck,
   'vital-pulse': Activity,
   'training-lab': Dumbbell,
   'fuel-nutrition': Flame,
@@ -153,6 +155,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onCloseMobile }) =
 
     return {
       'command-deck': `${state.pinnedModules.length} PIN`,
+      'documents-vault': '12 DOC',
       'vital-pulse': `${readiness}`,
       'training-lab': `${doneSets}/${totalSets}`,
       'fuel-nutrition': `${totalKcal}`,
