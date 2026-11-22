@@ -201,10 +201,18 @@ export const MODULE_VISUALS: Record<ModuleId, ModuleVisualSpec> = {
 
 export const MODULE_ORDER: ModuleId[] = [
   'command-deck',
+  'documents-vault',
   'ai-swarm',
   'hardware-nodes',
-  'documents-vault' as ModuleId,
   'sanctuary-audio',
+  'vital-pulse',
+  'training-lab',
+  'fuel-nutrition',
+  'health-dossier',
+  'day-rhythm',
+  'inner-circle',
+  'life-finance',
+  'forge-mind',
 ];
 
 const prewarmedImages = new Set<string>();
@@ -212,6 +220,7 @@ const prewarmedChunks = new Set<ModuleId>();
 
 export const ROUTE_PRELOADERS: Partial<Record<ModuleId, () => Promise<unknown>>> = {
   'command-deck': () => import('../views/CommandDeckView'),
+  'documents-vault': () => import('../views/DocumentVaultView'),
   'vital-pulse': () => import('../views/VitalPulseView'),
   'training-lab': () => import('../views/TrainingLabView'),
   'fuel-nutrition': () => import('../views/FuelNutritionView'),
