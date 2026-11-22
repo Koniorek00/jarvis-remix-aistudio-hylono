@@ -1,0 +1,396 @@
+GREENFIELD MASTER PROMPT: JARVIS PERSONAL OS — Sovereign Photographic Bento HUD
+
+PURPOSE: Build JARVIS PERSONAL OS completely from scratch as a brand-new, standalone, local-first web application (no legacy code, no external backend required).
+DEFAULT UI LANGUAGE: Polish (PL) with crisp HUD technical labels, plus a live 1-click PL / EN switcher in the top header.
+
+1. PRODUCT VISION & ARCHITECTURAL IDENTITY
+
+Build JARVIS PERSONAL OS — a sovereign, ultra-fast, deeply personal Life Operating System & AI Assistant HUD designed around one uncompromising visual and ergonomic law:
+
+Every surface communicates its domain in under 200 ms through atmospheric, low-weight macro photography, razor-sharp typography, and zero-jank 60–120 FPS responsiveness.
+
+Core Visual Signature
+
+Obsidian Photographic Navigation Rail (252px desktop, collapsible to 72px icon-thumbnail rail, slide-over drawer on mobile):
+
+Deep matte chassis (#090C11).
+
+Top brand mark: geometric luminous cyan ring icon + JARVIS (PERSONAL OS).
+
+EVERY single navigation item displays a bespoke dark thematic micro-background photo behind crisp text, a live status/count badge, and a subtle glowing cyan active border (#14F1D9) on the active route.
+
+Bottom pinned Live Session Pill (dynamically displays the currently running engine: e.g., Focus Block · 42:15, Calm 6Hz · Playing, or Morning Stack · 3/5, clickable to jump or Play/Pause).
+
+Bottom Operator Identity & OS Mode Switcher: Wiktor Myszor · Local-First OS with instant OS mode selector (ACTIVE | DEEP WORK | FIELD | STEALTH).
+
+Dual-Mode Architectural Canvas:
+
+Daylight Architectural Mode (Default): Crisp warm stone/alabaster canvas (#F4F3EF) contrasted against deep obsidian full-bleed photographic Bento cards (#0B0E14) with rounded 20px corners and fine 1px specular borders.
+
+Circadian Night OLED Mode (1-Click Header Toggle): Pure OLED chassis (#07090D) with stepped matte obsidian surfaces (#0E1219, #151B26) for evening zero-glare comfort.
+
+Full-Bleed Photographic Hero + Interactive Bento System:
+
+Every page opens with a cinematic full-bleed dark Hero Banner featuring right-aligned domain photography, title, subtitle, live summary KPIs, view switches (Bento | Compact | Reset), and instant filtering.
+
+On the main Command Deck, users pin/unpin any module, reorder Pinned Priority Bento cards (<- / -> buttons, persisted automatically), read live cross-module telemetry (tabular-nums), and execute 2 real working inline quick actions directly from each card without leaving the deck.
+
+2. COMPLETE GREENFIELD PROJECT STRUCTURE
+
+Scaffold the entire project cleanly from scratch using React 19 + TypeScript + Vite + Tailwind CSS + Lucide React following this exact modular directory tree:
+
+jarvis-personal-os/
+├── index.html                          # Preconnect hints, Inter + JetBrains Mono fonts, dark boot bg
+├── package.json                        # react, react-dom, lucide-react, tailwindcss, vite, typescript
+├── vite.config.ts                      # Manual chunk splitting (views lazy-loaded per route)
+├── tsconfig.json
+└── src/
+    ├── main.tsx                        # App entry point
+    ├── App.tsx                         # Route controller, ErrorBoundary, ToastHost, CommandPalette
+    ├── index.css                       # Design tokens, tabular-nums, GPU utility classes, print styles
+    │
+    ├── types/
+    │   └── jarvis.ts                   # Complete strict TypeScript models for all 12 modules
+    │
+    ├── assets/
+    │   └── visualManifest.ts           # All 12 Heroes, 12 Sidebar Micro-Thumbs, Sub-Card Photos,
+    │                                   # CSS ambient fallback gradients & strict WebP size helpers
+    │
+    ├── store/
+    │   ├── seedData.ts                 # Rich, realistic, inspiring personal baseline dataset (PL & EN)
+    │   ├── jarvisStore.tsx             # React Context + useReducer with debounced localStorage
+    │   │                               # persistence (jarvis_personal_os_v1) + JSON Backup/Restore
+    │   └── i18n.ts                     # Clean PL / EN dictionary for instant 1-click switching
+    │
+    ├── engines/
+    │   ├── audioDspEngine.ts           # Real zero-dependency Web Audio API engine:
+    │   │                               # Binaural (headphones) + Smooth Isochronic AM (speakers)
+    │   │                               # + Low-pass Filtered Pink/Brown Noise + Smooth Gain Ramp
+    │   ├── healthDossierExporter.ts    # Client-side Executive Health Dossier compiler:
+    │   │                               # Printable Doctor-Ready HTML/PDF, Obsidian .md, & .json
+    │   └── readinessEngine.ts          # Deterministic Readiness Score, Circadian Curve,
+    │                                   # Muscle Recovery % & Hydration Sweat Target calculators
+    │
+    ├── components/
+    │   ├── shell/
+    │   │   ├── Sidebar.tsx             # Obsidian photographic rail + Live Pill + OS Mode Switcher
+    │   │   ├── TopBar.tsx              # Breadcrumb, Global Search (Cmd+K), PL/EN, Day/OLED, Export
+    │   │   ├── CommandPalette.tsx      # Cmd+K instant navigation, quick logging & audio triggers
+    │   │   └── ToastHost.tsx           # Non-intrusive GPU-animated feedback toasts
+    │   └── ui/
+    │       ├── PhotographicCard.tsx    # Core optimized image card (scrim, lazy/eager, CSS fallback)
+    │       ├── PageHero.tsx            # Reusable full-bleed photographic Hero Banner for all 12 views
+    │       ├── SparklineSvg.tsx        # Ultra-light Tufte-style SVG sparkline (zero heavy chart libs)
+    │       └── RangeBar.tsx            # Biomarker Standard Range vs. Longevity Optimal Zone visualizer
+    │
+    └── views/                          # All 12 screens (code-split via React.lazy)
+        ├── CommandDeckView.tsx         # 00: Central HUD (Pinned 2x2 + All Systems + Inline Actions)
+        ├── VitalPulseView.tsx          # 01: Readiness, HRV/Sleep, 75m Bio-Stack Sequencer, Circadian SVG
+        ├── TrainingLabView.tsx         # 02: Workouts, Live Set/Rest Logger, PRs, SVG Muscle Recovery Map
+        ├── FuelNutritionView.tsx       # 03: Meals/Macros, CNC Hydration/Electrolytes, Supps, Fasting Ring
+        ├── HealthDossierView.tsx       # 04: Biomarkers, Lab Vault, 1-Click PDF/MD/JSON Health Dossier
+        ├── DayRhythmView.tsx           # 05: 90m Ultradian Blocks Live Timer + 3-Tier Priority Cockpit
+        ├── InnerCircleView.tsx         # 06: Family/Friends/Mentors Warmth Pulse + Offline Bridge Prompts
+        ├── LifeFinanceView.tsx         # 07: Runway Radar, Cashflow Logger, Restock Board, Sub Audit
+        ├── HardwareNodesView.tsx       # 08: S1-S4 Sovereign Mesh Telemetry + Bio-Hardware Control Strip
+        ├── AiSwarmView.tsx             # 09: Approval Gate, Live Trace Tree, Budget Cap, Research Dispatch
+        ├── ForgeMindView.tsx           # 10: .jkp Atoms + 1-Atom -> 6-Vessels Polymorphic Switcher + SRS
+        └── SanctuaryAudioView.tsx      # 11: Live Web Audio DSP Synth + Breathing Orb + Soul Dump Journal
+
+
+3. VISUAL DIRECTION & EXTREME PERFORMANCE ENGINE (MANDATORY FROM LINE 1)
+
+This app MUST feel instant, crisp, and buttery smooth even on mid-range laptops or tablets. Never ship heavy 4K PNGs or GPU-killing live blur layers.
+
+3.1 Photographic Composition & Universal Scrim Rule
+
+Every thematic image across the entire app (12 Hero Banners, 12 Sidebar Micro-Thumbnails, all Command Deck Bento Cards, and major sub-view feature cards) MUST follow one cohesive dark architectural studio aesthetic (Apple Pro / Dyson / Teenage Engineering / Leica mood):
+
+Composition Lock: Primary visual subject positioned strictly in the right 40%–45% of the frame. The left 55% remains calm dark shadow for ultra-crisp text legibility.
+
+Pre-Baked CSS Gradient Scrim (Zero Blur Cost): Every PhotographicCard overlays this exact pure-CSS scrim over the <img>:
+
+background: linear-gradient(
+  90deg,
+  rgba(9, 12, 17, 0.96) 0%,
+  rgba(9, 12, 17, 0.84) 44%,
+  rgba(9, 12, 17, 0.36) 76%,
+  rgba(9, 12, 17, 0.14) 100%
+);
+
+
+Zero-Flash Ambient Fallback: Every image slot in visualManifest.ts defines a bespoke radial/linear dark CSS gradient tinted with that module's signature accent color as the container's instant background, PLUS an onError graceful fallback so a broken network image NEVER produces an empty white box or ugly icon.
+
+3.2 Strict Asset Weight & Loading Optimization
+
+Strict Resolution & Weight Targets (visualManifest.ts):
+
+Sidebar nav pill thumbnails: Max 320 x 96 px, WebP (q=68), target 4-9 KB.
+
+Bento & sub-panel cards: Max 640 x 360 px, WebP (q=72), target 16-30 KB.
+
+Page Hero banners: Max 1200 x 400 px, WebP (q=75), target 40-65 KB.
+
+When using curated photographic URLs (e.g., Unsplash CDN) or generated assets, ALWAYS enforce strict sizing and WebP compression query params (?auto=format&fit=crop&w=640&q=72&fm=webp for cards, w=320&q=65&fm=webp for sidebar, w=1200&q=75&fm=webp for heroes) — NEVER load uncompressed original files.
+
+Priority & Preloading Pipeline:
+
+Active Hero Banner + top 4 Pinned Bento cards: loading="eager", fetchPriority="high", decoding="async".
+
+Below-the-fold cards, sidebar thumbs, and sub-cards: loading="lazy", decoding="async".
+
+On sidebar item hover (onMouseEnter), pre-warm that route's JS chunk and Hero image inside requestIdleCallback so clicking a tab feels instantaneous (0 ms lag).
+
+GPU & Rendering Discipline:
+
+ZERO backdrop-filter: blur() inside scrolling containers, Bento grids, or sidebar lists. Allow subtle blur strictly on floating modals (Cmd+K Command Palette).
+
+Apply contain: layout paint style on every PhotographicCard and content-visibility: auto; contain-intrinsic-size: 240px; on below-the-fold cards.
+
+Animate ONLY compositor properties (transform, opacity).
+
+Wrap PhotographicCard, sidebar nav items, and SVG charts in React.memo.
+
+Debounce live search inputs (120 ms) and batched localStorage writes (250 ms).
+
+Apply font-variant-numeric: tabular-nums to ALL timers, biometrics, calories, macros, weights, and currency values so digits never jitter.
+
+4. COMPLETE 12-SCREEN SPECIFICATION (EVERY SEGMENT PACKED WITH REAL UTILITY & "WOW")
+
+00. Command Deck (Default Landing View)
+
+Hero Theme: Macro brushed-titanium rotary dial & obsidian cockpit glass edge on the right with subtle electric cyan rim light.
+
+Top Controls: View toggle (Bento | Compact | Reset Layout), Pillar Filter Tabs (Wszystkie | Przypięte | Ciało & Bio | Życie & Sieć | Umysł & Kuźnia), instant module/action search.
+
+Pinned Section (Default 4 Pinned: Vital Pulse, Training Lab, Fuel & Nutrition, Health Vault & Dossier):
+
+2x2 high-impact photographic Bento cards with <- -> reorder arrows, Pin/Unpin button, live calculated headline metric, secondary status line, and 2 real working inline action pills (e.g., +300ml Wody, Start 90m, Export Health PDF, Play Calm 6Hz).
+
+All Systems Section: Remaining 7 modules rendered as full photographic Bento cards ready to pin or open in 1 click.
+
+PILLAR 1: BODY & BIO (CIAŁO & BIO)
+
+01. Vital Pulse — Readiness & Bio-Stack Sequencer
+
+Accent: #14F1D9 | Photo Vibe: Bioluminescent cyan-emerald light waves refracting through dark smoked glass crystal & precision wearable sensor edge.
+
+Deck Live Metric: Readiness 88/100 · HRV 74 ms · Sen 7h 48m | Inline Actions: [Start Bio-Stack] [Check-In]
+
+Inside Screen:
+
+Interactive 75-Min Morning Bio-Stack Sequencer: 5 photographic horizontal step cards (10k Lux Light 15m -> PEMF + RLT 20m -> Cold Plunge 3m -> EWOT + Power Plate/Rower 25m -> Elektrolity & Fokus 12m) with 1-click completion checkboxes and a live running step countdown timer synced to the Sidebar Live Pill.
+
+Circadian Energy Curve (Custom SVG): Clean smooth Bezier curve mapping predicted Deep Work Peak, afternoon NSDR recovery dip, and 21:00 screen wind-down cutoff dynamically scaled by today's HRV & Sleep inputs.
+
+Quick Bio-State Check-In: Interactive 1–10 sliders (Energia, Jasność umysłu, Nastrój, Regeneracja mięśni, Stres) saving timestamped snapshots directly into the Health Dossier history.
+
+02. Training Lab — Precision Workouts & Muscle Recovery Map
+
+Accent: #FFB020 | Photo Vibe: Dark architectural studio gym, matte-black forged steel kettlebell & knurled barbell sleeve on dark concrete with warm amber rim light.
+
+Deck Live Metric: Upper Strength + Zone 2 · 0/5 ćw. (or live active session timer) | Inline Actions: [Start Treningu] [Szybka Seria]
+
+Inside Screen:
+
+Photographic Protocol Selector Cards: 4 distinct visual workout protocols (Siła Push/Pull, Zone 2 / EWOT, Mobilność & Kręgosłup, Regeneracja / BFR).
+
+Live Workout Execution Logger: Add/edit exercises, log exact Ciężar (kg), Powtórzenia, RPE (1-10), check off sets with an automatic Rest Countdown Timer (60s / 90s / 120s) and automatic PR (Personal Record) Badge whenever volume beats previous best.
+
+Interactive SVG Muscle Recovery Heatmap (Front & Back): Clean dark architectural anatomical SVG coloring major muscle groups (Chest, Back, Shoulders, Legs, Core, Arms) from Emerald (100% Fresh) to Amber (Recovering) to Crimson (Fatigued) dynamically computed from logged workouts over the last 72h.
+
+Weekly Volume & Zone 2 Strip: Lightweight SVG sparklines tracking weekly tonnage (kg) and Zone 2 cardio minutes.
+
+03. Fuel & Nutrition — Macros, Meals, Hydration & Supplements
+
+Accent: #84CC16 | Photo Vibe: Dark moody culinary editorial on black slate — seared wild salmon, sliced avocado, dark olive oil bottle & flaky salt on the right.
+
+Deck Live Metric: 1 840 / 2 450 kcal · 142g Białka · 2.1L | Inline Actions: [+ Posiłek] [+ 300ml Wody]
+
+Inside Screen:
+
+1-Tap Photographic Favorite Meals + Custom Logger: Quick-add visual meal cards (Jajka + Awokado, Stek + Bataty, Shake Białkowy + Jagody, Łosoś + Ryż) plus custom meal form updating daily kcal, Białko (g), Tłuszcze (g), Węglowodany (g), Błonnik (g) bars and today's meal timeline in real time.
+
+CNC Hydration & Electrolyte Precision Deck: Tactile quick-dose keys (+250ml, +500ml, +Elektrolity 1000mg Na / 200mg K) whose daily fluid & sodium target automatically scales upward when a training session is logged today.
+
+Supplement Protocol Matrix: Grouped into Rano, W południe / Do posiłku, Wieczór / Sen with 1-click check-offs, dosages, and stock warnings synced with Life Ops.
+
+Fasting & Eating Window SVG Ring: Clean radial arc displaying current elapsed fasting/eating hours (16:8) with toggleable Start/End Fast button.
+
+04. Health Vault & Dossier — Biomarkers & 1-Click Medical Export
+
+Accent: #38BDF8 | Photo Vibe: Dark clean studio macro of amber diagnostic glass vials, anodized titanium medical folio & subtle cool-blue glass refraction on the right.
+
+Deck Live Metric: 12 Biomarkerów · 9 Optymalnych · 3 Do obserwacji | Inline Actions: [Pobierz Raport PDF] [+ Wynik Badania]
+
+Inside Screen (FLAGSHIP FEATURE):
+
+1-Click Instant Health Dossier Download Bar (100% Real Functional Client-Side Export):
+
+Pobierz Raport Zdrowia (PDF / Druk): Generates a clean, crisp, doctor-ready Executive Health Report (opens dedicated print-optimized window for instant Save-as-PDF + offers direct .html download) aggregating: Operator Bio Summary, 7-day Avg HRV/RHR/Sleep, Complete Biomarker Table with Standard vs. Optimal flags, Current Supplement & Training Stack, Recent Bio Check-Ins, and 3 Smart Questions for the Doctor (strictly educational, zero illegal medical diagnosis).
+
+Eksport Obsidian (.md) & Pełny Backup (.json) (Zero Lock-In).
+
+Interactive Biomarker Optimal-Range Visualizer: Tracks key longevity markers (Witamina D3, Ferrytyna, hs-CRP, HbA1c, ApoB, Testosteron Wolny, TSH, Indeks Omega-3, Insulina na czczo, Magnez RBC, ALT, Homocysteina). Each row renders a visual RangeBar clearly distinguishing Norma laboratoryjna vs. Strefa optymalna, trend delta, date, and an inline modal to add new lab results that instantly recalculate status counts and update the downloadable dossier.
+
+Categorized Document Vault: Photographic cards for Morfologia & Krew, Obrazowanie (MRI/USG), Protokoły Regeneracji, Przygotowanie do Wizyty with editable Doctor Visit Question Checklist.
+
+PILLAR 2: LIFE & MESH (ŻYCIE & SIEĆ)
+
+05. Day Rhythm — Ultradian Focus Blocks & Priority Cockpit
+
+Accent: #0A84FF | Photo Vibe: Sculptural matte-black & dark brass desk clock beside a warm shaft of morning architectural light on smoked oak.
+
+Deck Live Metric: Blok 90m · Architektura Systemu · 1/4 zadań | Inline Actions: [Start 90m] [+ Zadanie]
+
+Inside Screen:
+
+Live 90-Minute Ultradian Block Engine: Visual day rhythm cards (Poranna Kotwica, Blok Głęboki I (90m), Regeneracja / NSDR, Blok Głęboki II (90m), Zamknięcie Dnia 21:00) with a live Start/Pause/Reset timer mirrored in the Sidebar bottom pill.
+
+3-Tier Clarity Cockpit: Enforces focus with 1 Kluczowy Ruch Dnia (Needle Mover), 3 Zadania Wysokiej Dźwigni, and Szybki Zrzut (Inbox) with instant keyboard entry and completion toggles.
+
+06. Inner Circle — Family, Friends & Relationship Warmth Mesh
+
+Accent: #FB7185 | Photo Vibe: Warm dark architectural lounge with soft amber fireplace light and two matte ceramic tea cups on dark walnut on the right.
+
+Deck Live Metric: 12 Bliskich Osób · 2 Ciepłe Kontakty do odnowienia | Inline Actions: [Zapisz Kontakt] [Wyślij Iskrę]
+
+Inside Screen:
+
+Concentric Circle Filter: Rodzina | Bliscy Przyjaciele | Mentorzy & Sojusznicy.
+
+Connection Warmth Pulse Cards: Each person card displays relationship tag, days since last real interaction vs. desired cadence (e.g., Mama — co 3 dni, Przyjaciel — co 14 dni), visual warmth indicator (Emerald -> Amber -> Rose), personal context notes (what matters to them right now, gift ideas, upcoming birthday), and a 1-click Zaloguj Rozmowę / Spotkanie button that resets the timer.
+
+"Bridge to Offline" Gesture Generator: Generates 1 genuine, non-cheesy real-world action or short message idea tailored to that person, plus form to add new people to the circle.
+
+07. Life & Finance Ops — Runway, Cashflow & Smart Restock
+
+Accent: #10B981 | Photo Vibe: Luxury dark macro of a matte-black anodized titanium card, precision mechanical watch bezel & obsidian ledger with subtle emerald rim sheen.
+
+Deck Live Metric: Runway 8.4 mies. · 3 Braki do uzupełnienia | Inline Actions: [+ Wydatek/Wpływ] [Lista Zakupów]
+
+Inside Screen:
+
+Personal Runway & Cashflow Radar: Clean tabular KPI cards (Miesięczne wpływy, Koszty stałe, Stopa wolności %, Runway w miesiącach) + fast transaction logger updating figures live.
+
+Smart Essentials & Supplements Restock Board: Tracks real consumables (Omega-3, Elektrolity, Magnez, Witamina D3+K2, Kawa ziarnista, Filtry wody) with stock level bar (OK / Niski / Brak) and 1-click [Uzupełniono] button.
+
+Subscriptions Audit: Active tools/AI/life recurring costs with total monthly sum and [Oznacz do cięcia] toggle showing instant yearly savings.
+
+08. Hardware & Nodes — Sovereign Fleet (S1–S4) & Personal Bio-Gear
+
+Accent: #06B6D4 | Photo Vibe: Matte-black Linux Mini-PC workstation edge, minimalist titanium smart ring, and soft red-light therapy panel edge in a dark studio.
+
+Deck Live Metric: Mesh 4/4 Online · Tryb: ACTIVE · 12 ms | Inline Actions: [Zmień Tryb OS] [Ping Floty]
+
+Inside Screen:
+
+S1–S4 Sovereign Node Cards (each with thematic photo):
+
+S1 Wearable (Biometria / HRV / Audio Opus)
+
+S2 Android Companion (dev.aria.companion · S24 FE · Local LLM & SQLCipher)
+
+S3 Mini-PC Linux (aria-platform:8792 · Zenoh · SQLite WAL)
+
+S4 Windows Workstation (GPU Batch / Studio)
+
+Includes live-simulated/pingable latency refresh, CPU/RAM bars, and global OS Mode Selector (ACTIVE, DEEP WORK, FIELD, STEALTH).
+
+Personal Bio-Hardware Control Strip: Interactive cards for personal gear (Lampa 10k Lux, Koc & Maska RLT, Mata PEMF, Cold Plunge, System EWOT) logging session count and last maintenance/use date.
+
+PILLAR 3: MIND & FORGE (UMYSŁ & KUŹNIA)
+
+09. AI Swarm & Agents — Mission Control, Approval Gate & Budget Guard
+
+Accent: #6366F1 | Photo Vibe: Sculptural dark glass optical prisms refracting electric indigo and cyan light beams inside an obsidian server core.
+
+Deck Live Metric: 2 Aktywne · 1 Czeka na zgodę · $3.40 / $15 | Inline Actions: [Zatwierdź Plan] [Wyślij Research]
+
+Inside Screen:
+
+Human-in-the-Loop Approval Gate: Queued agent proposals (e.g., Gemini Deep Research: HRV + Light Timing 2026, Archive-Pro -> Docling: Book Distillation) displaying transparent step plan + estimated USD cost with 1-click [Zatwierdź i Uruchom] and [Odrzuć] buttons.
+
+Live Trace Tree & Budget Circuit Breaker: Expandable step-by-step execution traces (Search -> Parse Docling -> Map-Reduce v3.3 -> Compile .jkp) + adjustable Daily Spending Limit slider ($5–$50) that physically blocks new paid jobs if exceeded.
+
+Quick Mission Dispatch: Form to dispatch a new Research Question, Archive-Pro Distillation, or Synthesis job straight into the queue.
+
+10. The Forge & Mind — Knowledge Atoms (.jkp) & Polymorphic Viewer
+
+Accent: #A855F7 | Photo Vibe: Moody dark architectural study with a warm narrow beam lighting an open black leather notebook and geometric obsidian prism.
+
+Deck Live Metric: 88 Atomów (.jkp) · 5 do powtórki · Sprint 6/14 | Inline Actions: [Drill 3 min] [Widok 6 Naczyń]
+
+Inside Screen:
+
+1-Atom -> 6-Vessels Polymorphic Delivery Switcher: Select any loaded knowledge atom (include 8 rich built-in atoms covering Emotional Regulation, Arousal Reappraisal, Cognitive Shield, Empathetic Boundaries, First-Principles Inversion, Deep Sleep Architecture, Gratitude State-Shift, Scientific Thinking) and switch its live rendering instantly between:
+
+Audio 5 min (Skrypt + Pauzy)
+
+Komiks 4-Kadrowy (Dla młodzieży/dorosłych)
+
+Bajka Wieczorna (Rodzic + Dziecko)
+
+Filmik 15s (Prompt Flow/Veo)
+
+Aktywne Przywołanie (Active Recall Drill)
+
+Arena Mode (Symulacja pod presją)
+
+Interactive Active Recall & Mastery Gate Mini-Engine: Type/think unaided answer -> reveal core mechanism -> grade (Pewne / Częściowe / Błąd modelu) which genuinely updates the atom's Mastery Stage (S1–S6) and next SRS interval.
+
+11. Sanctuary & Audio — Real Web Audio API Resonance & Mindfulness
+
+Accent: #2DD4BF | Photo Vibe: Still dark nocturnal water surface with subtle golden mist and minimalist acoustic dark-wood slats on the right.
+
+Deck Live Metric: Silnik DSP Gotowy · Słuchawki Binaural (or live playing track) | Inline Actions: [Wycisz 6Hz] [Focus 16Hz]
+
+Inside Screen (REAL WORKING BROWSER AUDIO SYNTHESIZER):
+
+Zero-Dependency Web Audio API Acoustic Engine (audioDspEngine.ts):
+
+Actually generates clean, warm, click-free audio in real time (zero external MP3 files required!):
+
+RANO / CLARITY (10 Hz Alpha -> 14 Hz SMR gentle morning ramp + soft warm pad)
+
+WYCISZ / CALM (6 Hz Theta + low-pass filtered warm Brown Noise)
+
+FOCUS / DEEP WORK (16 Hz Beta + soft Pink Noise)
+
+SEN / DEEP REST (3.5 Hz Delta + ultra-soft sub-brown noise)
+
+Output Mode Switcher: Słuchawki (Stereo Binaural 220Hz/226Hz) vs. Głośnik (Płynne Tony Izochroniczne AM — bezpieczne bez słuchawek).
+
+Master Volume slider, Session Countdown (5m / 15m / 25m), and Play/Pause synced globally with the Sidebar Bottom Live Pill (keeps playing seamlessly while you browse other modules!).
+
+GPU-Accelerated Breathing Pacer Orb: Smooth CSS transform: scale() breathing guide (4s Wdech -> 6s Wydech) with toggleable start/stop.
+
+30-Second Soul Dump & Personalized Script Composer: Type what is alive in your mind right now -> Jarvis saves the entry to your local Gratitude/Reflection Journal and instantly composes a personalized 5-minute guided intention & breathing script weaving your exact words into timed [PAUZA: 4s WDECH / 6s WYDECH] blocks.
+
+5. CROSS-MODULE REACTIVITY & DATA INTEGRITY LAWS
+
+All 12 modules share ONE unified jarvisStore persisted to localStorage:
+
+Logging +300ml Wody or a meal in Fuel OR inline on Command Deck updates both views instantly.
+
+Completing a workout in Training Lab immediately updates the SVG Muscle Recovery Map, increases today's hydration target in Fuel, and shows up in the exported Health Dossier.
+
+Adding or editing a blood biomarker in Health Vault updates optimal/watch counts on Command Deck and embeds directly into the downloaded Executive Health Report PDF/MD.
+
+Starting an Audio DSP session in Sanctuary or a 90m Focus Block in Day Rhythm updates the Sidebar Bottom Live Pill and stays active across tab navigation.
+
+Clicking Export Backup in the top bar downloads the full local JSON state; Import Backup restores it cleanly.
+
+Pressing Cmd+K / Ctrl+K opens the Jarvis Command Palette allowing instant jump to any of the 12 modules OR executing quick actions (+500ml wody, Włącz Calm 6Hz, Pobierz Raport Zdrowia PDF, Przełącz tryb Night OLED, Przełącz PL/EN).
+
+6. PRE-DELIVERY SELF-VERIFICATION CHECKLIST
+
+Before finishing the build, verify every single item:
+
+Zero legacy branding: Strictly 100% JARVIS PERSONAL OS across titles, routes, state, and copy.
+
+Every surface has a thematic visual: All 12 Heroes, all 12 Sidebar pills, all Command Deck Bento cards, and major sub-module cards render optimized photographic backgrounds with smooth left-to-right gradient scrims and zero text-readability collisions.
+
+Zero jank & fast load: Strict compressed WebP image parameters (<= 320px sidebar, <= 640px cards, <= 1200px heroes), zero backdrop-filter: blur() on scrolling cards/lists, tabular-nums on live counters, lazy-loaded route views.
+
+Zero dead buttons: Every quick action pill, modal, workout set logger, meal/water button, biomarker editor, PDF/MD/JSON exporter, relationship logger, approval gate button, and Web Audio DSP synthesizer works end-to-end with zero console or TypeScript errors.

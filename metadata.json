@@ -1,0 +1,6 @@
+{
+  "name": "JARVIS PERSONAL OS",
+  "description": "Suwerenny, lokalny system operacyjny życia i asystent AI w estetyce fotograficznego HUD.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
